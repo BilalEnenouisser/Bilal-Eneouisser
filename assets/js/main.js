@@ -3,16 +3,13 @@
 // Prevent multiple initializations
 let appInitialized = false;
 
-// DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
-    if (!appInitialized) {
-        initializeApp();
-        appInitialized = true;
-    }
-});
-
 // Initialize all app functionality
 function initializeApp() {
+    if (appInitialized) {
+        console.log('App already initialized, skipping...');
+        return;
+    }
+    
     console.log('Initializing app...');
     
     try {
@@ -46,6 +43,7 @@ function initializeApp() {
         // Initialize mobile touch enhancements
         initializeMobileTouchEnhancements();
         
+        appInitialized = true;
         console.log('App initialized successfully');
     } catch (error) {
         console.error('Error initializing app:', error);
@@ -784,7 +782,7 @@ function initializeBrandsSlider() {
         // Temporarily disable CSS animation to allow manual scrolling
         brandsTrack.style.animation = 'none';
         
-        console.log('Drag started - isMouseDown:', isMouseDown, 'startX:', startX, 'startTransformX:', startTransformX);
+        // console.log('Drag started - isMouseDown:', isMouseDown, 'startX:', startX, 'startTransformX:', startTransformX);
     });
 
     // Mouse move event
@@ -817,7 +815,7 @@ function initializeBrandsSlider() {
             updateBrandsOpacity();
         });
         
-        console.log('Mouse move - isMouseDown:', isMouseDown, 'walk:', walk, 'currentTransformX:', currentTransformX, 'maxScrollLeft:', maxScrollLeft);
+        // console.log('Mouse move - isMouseDown:', isMouseDown, 'walk:', walk, 'currentTransformX:', currentTransformX, 'maxScrollLeft:', maxScrollLeft);
     });
 
     // Mouse up event
@@ -851,7 +849,7 @@ function initializeBrandsSlider() {
             brandsTrack.style.animationPlayState = 'running';
         }
         
-        console.log('Drag ended - finalPosition:', finalPosition, 'animationDelay:', animationDelay);
+        // console.log('Drag ended - finalPosition:', finalPosition, 'animationDelay:', animationDelay);
     });
 
     // Mouse leave event
@@ -994,7 +992,7 @@ function initializeBrandsSlider() {
     
     // Test event listener to verify events are working
     brandsTrack.addEventListener('click', (e) => {
-        console.log('Click detected on brands track at:', e.clientX, e.clientY);
+        // console.log('Click detected on brands track at:', e.clientX, e.clientY);
     });
     
     // Wheel event for mouse wheel scrolling
@@ -1022,11 +1020,11 @@ function initializeBrandsSlider() {
     // Make brands track focusable for keyboard navigation
     brandsTrack.setAttribute('tabindex', '0');
     
-    // Debug info
-    console.log('Brands slider initialized successfully');
-    console.log('Brands track element:', brandsTrack);
-    console.log('Brands track scrollable:', brandsTrack.scrollWidth > brandsTrack.clientWidth);
-    console.log('Brands track scrollLeft:', brandsTrack.scrollLeft);
+    // Debug info (commented out for production)
+    // console.log('Brands slider initialized successfully');
+    // console.log('Brands track element:', brandsTrack);
+    // console.log('Brands track scrollable:', brandsTrack.scrollWidth > brandsTrack.clientWidth);
+    // console.log('Brands track scrollLeft:', brandsTrack.scrollLeft);
 }
 
 // ===== EXPORT FOR MODULE USE =====
@@ -1204,7 +1202,7 @@ function initializeTestimonialsSlider() {
             startAutoplay();
         }
 
-        console.log('Testimonials slider initialized successfully');
+        // console.log('Testimonials slider initialized successfully');
     } catch (error) {
         console.error('Error initializing testimonials slider:', error);
     }
@@ -1219,7 +1217,7 @@ function initializeBlogFunctionality() {
         // Initialize blog navigation
         initializeBlogNavigation();
         
-        console.log('Blog functionality initialized successfully');
+        // console.log('Blog functionality initialized successfully');
     } catch (error) {
         console.error('Error initializing blog functionality:', error);
     }
@@ -1318,7 +1316,7 @@ function initializeFloatingSocialBar() {
             });
         }
         
-        console.log('Floating social media bar initialized successfully');
+        // console.log('Floating social media bar initialized successfully');
     } catch (error) {
         console.error('Error initializing floating social media bar:', error);
     }
@@ -1349,7 +1347,7 @@ function initializeBackToTop() {
             });
         });
         
-        console.log('Back to top button initialized successfully');
+        // console.log('Back to top button initialized successfully');
     } catch (error) {
         console.error('Error initializing back to top button:', error);
     }
@@ -1431,7 +1429,7 @@ function initializeScrollTracking() {
                             'value': threshold
                         });
                     }
-                    console.log(`Scroll depth ${threshold}% tracked`);
+                    // console.log(`Scroll depth ${threshold}% tracked`);
                 }
             });
         }
@@ -1642,7 +1640,12 @@ function initializeMobileTouchEnhancements() {
 }
 
 // ===== DOM READY EVENT =====
-document.addEventListener('DOMContentLoaded', function() {
+function initializeAppOnce() {
+    if (appInitialized) {
+        console.log('App already initialized, skipping...');
+        return;
+    }
+    
     console.log('DOM fully loaded, initializing app...');
     initializeApp();
     
@@ -1650,15 +1653,19 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         initializeEnhancedTracking();
     }, 1000);
-});
+    
+    appInitialized = true;
+}
 
-// Fallback for older browsers
+// Single event listener for DOM ready
+document.addEventListener('DOMContentLoaded', initializeAppOnce);
+
+// Fallback for older browsers - only if not already initialized
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeApp);
+    // DOM is still loading, wait for DOMContentLoaded
+    console.log('DOM still loading, waiting for DOMContentLoaded...');
 } else {
-    // DOM is already loaded
-    initializeApp();
-    setTimeout(() => {
-        initializeEnhancedTracking();
-    }, 1000);
+    // DOM is already loaded, initialize immediately
+    console.log('DOM already loaded, initializing immediately...');
+    initializeAppOnce();
 }
