@@ -328,7 +328,7 @@
   }
   
   .portfolio-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
   }
   
   .blog-grid {
@@ -539,7 +539,7 @@
   }
   
   .portfolio-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   
   .portfolio-image {
@@ -1408,31 +1408,53 @@
     }
 }
 
-/* Touch Device Optimizations */
+/* Touch Device Optimizations - Enhanced Mobile Animations */
 @media (hover: none) and (pointer: coarse) {
+  /* Enable hover effects on touch devices */
   .portfolio-card:hover,
   .blog-card:hover,
   .service-card:hover {
-    transform: none;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
   }
   
   .tech-item:hover,
   .skill-tag:hover {
-    transform: none;
+    transform: translateY(-2px) scale(1.02);
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
   }
   
   .btn:hover {
-    transform: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
   }
   
   .portfolio-card:hover .portfolio-image img,
   .blog-card:hover .blog-image img {
-    transform: none;
+    transform: scale(1.05);
   }
   
   .portfolio-overlay {
     opacity: 1;
     background: rgba(15, 23, 42, 0.7);
+  }
+  
+  /* Add active states for touch devices */
+  .skill-tag:active,
+  .tech-item:active {
+    transform: translateY(-1px) scale(1.01);
+  }
+  
+  .portfolio-card:active,
+  .blog-card:active,
+  .service-card:active {
+    transform: translateY(-3px);
+  }
+  
+  .btn:active {
+    transform: translateY(-1px);
   }
 }
 
@@ -1521,5 +1543,176 @@
   .category-btn {
     font-size: 0.8rem;
     padding: 0.5rem 0.75rem;
+  }
+}
+
+/* ===== PORTFOLIO MOBILE FIX ===== */
+@media (max-width: 767px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  
+  .portfolio-card {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .portfolio-image {
+    height: 250px !important;
+  }
+  
+  /* Enable mobile animations */
+  .skill-tag:hover,
+  .skill-tag:active {
+    transform: translateY(-2px) scale(1.02) !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2) !important;
+  }
+  
+  .skill-tag:hover i,
+  .skill-tag:active i {
+    transform: rotate(180deg) scale(1.1) !important;
+    color: white !important;
+  }
+  
+  .tech-item:hover,
+  .tech-item:active {
+    transform: translateY(-2px) scale(1.02) !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+  }
+  
+  .portfolio-card:hover,
+  .portfolio-card:active {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-xl) !important;
+  }
+  
+  .service-card:hover,
+  .service-card:active {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-xl) !important;
+  }
+  
+  .btn:hover,
+  .btn:active {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .portfolio-card {
+    margin: 0 0.5rem;
+  }
+  
+  .portfolio-image {
+    height: 200px !important;
+  }
+  
+  /* Enable mobile animations */
+  .skill-tag:hover,
+  .skill-tag:active {
+    transform: translateY(-2px) scale(1.02) !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2) !important;
+  }
+  
+  .skill-tag:hover i,
+  .skill-tag:active i {
+    transform: rotate(180deg) scale(1.1) !important;
+    color: white !important;
+  }
+  
+  .tech-item:hover,
+  .tech-item:active {
+    transform: translateY(-2px) scale(1.02) !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    border-color: var(--primary-color) !important;
+  }
+  
+  .portfolio-card:hover,
+  .portfolio-card:active {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-xl) !important;
+  }
+  
+  .service-card:hover,
+  .service-card:active {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-xl) !important;
+  }
+  
+  .btn:hover,
+  .btn:active {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+  }
+}
+
+/* ===== MOBILE ANIMATION ENHANCEMENTS ===== */
+@media (max-width: 767px) {
+  /* Ensure smooth animations on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Enable hardware acceleration for animations */
+  .skill-tag,
+  .tech-item,
+  .portfolio-card,
+  .service-card,
+  .btn {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -ms-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+  }
+  
+  /* Smooth transitions for mobile */
+  .skill-tag,
+  .tech-item,
+  .portfolio-card,
+  .service-card,
+  .btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  
+  /* Active state animations for touch */
+  .skill-tag:active,
+  .tech-item:active,
+  .portfolio-card:active,
+  .service-card:active,
+  .btn:active {
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 }

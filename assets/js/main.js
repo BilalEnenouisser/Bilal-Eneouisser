@@ -43,6 +43,9 @@ function initializeApp() {
             initializeAnimations();
         }, 100);
         
+        // Initialize mobile touch enhancements
+        initializeMobileTouchEnhancements();
+        
         console.log('App initialized successfully');
     } catch (error) {
         console.error('Error initializing app:', error);
@@ -299,6 +302,11 @@ function initializePortfolioFilters() {
     const portfolioItems = document.querySelectorAll('.portfolio-card');
     const portfolioGrid = document.querySelector('.portfolio-grid');
     
+    // Set initial mobile layout if needed
+    if (window.innerWidth <= 767) {
+        portfolioGrid.style.gridTemplateColumns = '1fr';
+    }
+    
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
@@ -329,15 +337,28 @@ function initializePortfolioFilters() {
                 }
             });
             
-            // Adjust grid layout based on visible items
-            if (visibleCount <= 3) {
+            // Adjust grid layout based on visible items and screen size
+            if (window.innerWidth <= 767) {
+                // Mobile: always show 1 column
+                portfolioGrid.style.justifyContent = 'center';
+                portfolioGrid.style.gridTemplateColumns = '1fr';
+            } else if (visibleCount <= 3) {
+                // Desktop: adjust based on visible items
                 portfolioGrid.style.justifyContent = 'flex-start';
                 portfolioGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(350px, 1fr))';
             } else {
+                // Desktop: show 3 columns
                 portfolioGrid.style.justifyContent = 'center';
                 portfolioGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
             }
         });
+    });
+    
+    // Handle resize events to maintain mobile layout
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 767) {
+            portfolioGrid.style.gridTemplateColumns = '1fr';
+        }
     });
 }
 
@@ -1533,6 +1554,90 @@ function initializeEnhancedTracking() {
         console.log('Enhanced Google Analytics tracking initialized successfully');
     } catch (error) {
         console.error('Error initializing enhanced tracking:', error);
+    }
+}
+
+// ===== MOBILE TOUCH ENHANCEMENTS =====
+function initializeMobileTouchEnhancements() {
+    // Check if device supports touch
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        console.log('Mobile touch device detected, enhancing interactions...');
+        
+        // Add touch feedback for skill tags
+        const skillTags = document.querySelectorAll('.skill-tag');
+        skillTags.forEach(tag => {
+            tag.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-2px) scale(1.02)';
+                this.style.background = 'var(--primary-color)';
+                this.style.color = 'white';
+                this.style.borderColor = 'var(--primary-color)';
+                this.style.boxShadow = '0 4px 15px rgba(99, 102, 241, 0.2)';
+            });
+            
+            tag.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.background = '';
+                this.style.color = '';
+                this.style.borderColor = '';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Add touch feedback for tech items
+        const techItems = document.querySelectorAll('.tech-item');
+        techItems.forEach(item => {
+            item.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-2px) scale(1.02)';
+                this.style.boxShadow = '0 8px 25px rgba(99, 102, 241, 0.2)';
+            });
+            
+            item.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Add touch feedback for portfolio cards
+        const portfolioCards = document.querySelectorAll('.portfolio-card');
+        portfolioCards.forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = 'var(--shadow-xl)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Add touch feedback for service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = 'var(--shadow-xl)';
+            });
+            
+            card.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Add touch feedback for buttons
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = 'var(--shadow-lg)';
+            });
+            
+            btn.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
     }
 }
 
