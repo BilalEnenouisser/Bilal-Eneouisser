@@ -1,0 +1,317 @@
+/* Project Pages Common Styles */
+
+/* Swiper Slider Styles */
+.swiper {
+    width: 100%;
+    height: 100%;
+    margin: 2rem 0;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: var(--bg-card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+    background: var(--primary-color);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color);
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: var(--primary-hover);
+}
+
+/* Fixed Social Media Sidebar */
+.social-media-fixed {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-media-fixed a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.social-media-fixed .instagram { 
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+}
+.social-media-fixed .linkedin { 
+    background: #0077b5; 
+}
+.social-media-fixed .github { 
+    background: #333; 
+}
+.social-media-fixed .facebook { 
+    background: #1877f2; 
+}
+.social-media-fixed .dribbble { 
+    background: #ea4c89; 
+}
+
+.social-media-fixed a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Fixed WhatsApp Button */
+.whatsapp-fixed {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 1000;
+}
+
+.whatsapp-fixed a {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 24px;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-fixed a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* CTA Banner Styles */
+.cta-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: white;
+    overflow: hidden;
+}
+
+.cta-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.cta-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+}
+
+.cta-banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.cta-text h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.cta-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.cta-actions .btn {
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+}
+
+.cta-actions .btn-whatsapp {
+    background: #25d366;
+    color: white;
+    border: 2px solid #25d366;
+}
+
+.cta-actions .btn-whatsapp:hover {
+    background: white;
+    color: #25d366;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+.cta-actions .btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cta-actions .btn-outline:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+/* Footer WhatsApp Button Hover */
+.footer-cta-section .btn-whatsapp:hover {
+    background: white;
+    color: #25d366;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .social-media-fixed {
+        display: none;
+    }
+    .whatsapp-fixed {
+        left: 15px;
+        bottom: 15px;
+    }
+    .whatsapp-fixed a {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    /* Project Tags - Center align on mobile */
+    .project-tags {
+        justify-content: center;
+    }
+    
+    /* Navigation Buttons - Remove column direction on mobile */
+    .nav-buttons {
+        flex-direction: row;
+    }
+    
+    /* CTA Banner Mobile */
+    .cta-content {
+        padding: 3rem 0;
+    }
+    
+    .cta-text h2 {
+        font-size: 2.2rem;
+    }
+    
+    .cta-text p {
+        font-size: 1.1rem;
+        max-width: 100%;
+    }
+    
+    .cta-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        gap: 1rem;
+    }
+    
+    .cta-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Mobile Navbar */
+    .header .nav {
+        padding: 1rem 1rem;
+    }
+    
+    .header .logo {
+        padding: 0;
+    }
+    
+    .header .logo-img {
+        height: 40px;
+        width: auto;
+    }
+    
+    .header .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .header .nav-actions .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    .header .nav-actions .btn-primary {
+        display: none;
+    }
+    
+    .header .nav-actions #theme-toggle {
+        margin-left: auto;
+    }
+    
+    /* Footer Mobile Styling */
+    .footer-links {
+        align-items: center;
+    }
+    
+    .cta-feature {
+        justify-content: center;
+    }
+}

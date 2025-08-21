@@ -1,0 +1,100 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "skills": "Skills",
+    "portfolio": "Portfolio",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Bilal Eneouisser",
+    "subtitle": "Full Stack Developer (React.js & Laravel) | UI/UX & WordPress Expert | E-Commerce Specialist | ALX Certified Software Engineer",
+    "description": "Transforming ideas into exceptional digital experiences. Specialized in modern web development, intuitive UI/UX design, and scalable e-commerce solutions. Based in Rabat, Morocco.",
+    "cta": {
+      "primary": "Get In Touch",
+      "secondary": "View My Work"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Passionate developer with a focus on creating impactful digital solutions",
+    "heading": "Where Technology Meets Creativity",
+    "description": "I'm a dedicated Full Stack Developer with over 3 years of experience crafting digital solutions that drive business growth. My expertise spans from modern frontend frameworks to robust backend systems, with a special focus on creating intuitive user experiences.",
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects Completed",
+      "clients": "Happy Clients"
+    }
+  },
+  "services": {
+    "title": "My Services",
+    "subtitle": "Comprehensive web development and design solutions",
+    "webDevelopment": {
+      "title": "Web Development",
+      "description": "Custom web applications built with React.js and Laravel. Responsive and scalable solutions."
+    },
+    "uiuxDesign": {
+      "title": "UI/UX Design",
+      "description": "Intuitive user interfaces designed with user experience in mind using Figma and Adobe XD."
+    },
+    "wordpressDevelopment": {
+      "title": "WordPress Development",
+      "description": "Custom WordPress themes, plugins, and e-commerce solutions with SEO optimization."
+    },
+    "ecommerceSolutions": {
+      "title": "E-commerce Solutions",
+      "description": "Complete e-commerce platforms using Shopify, WooCommerce, and custom solutions."
+    }
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "Comprehensive skill set across frontend, backend, and design",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "cmsEcommerce": "CMS & E-commerce"
+  },
+  "portfolio": {
+    "title": "My Portfolio",
+    "subtitle": "Showcasing my best work across different technologies",
+    "filters": {
+      "all": "All Projects",
+      "react": "React.js",
+      "laravel": "Laravel",
+      "wordpress": "WordPress"
+    },
+    "viewProject": "View Project",
+    "liveDemo": "Live Demo",
+    "github": "GitHub"
+  },
+  "experience": {
+    "title": "Experience & Education",
+    "subtitle": "My professional journey and background"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to start your next project? Let's discuss how I can help",
+    "heading": "Let's Work Together",
+    "description": "I'm always open to discussing new projects and creative ideas.",
+    "form": {
+      "name": "Full Name *",
+      "email": "Email Address *",
+      "phone": "Phone Number",
+      "message": "Message *",
+      "submit": "Send Message via WhatsApp"
+    }
+  },
+  "footer": {
+    "description": "Full Stack Developer specializing in React.js, Laravel, WordPress, and UI/UX design.",
+    "quickLinks": "Quick Links",
+    "copyright": "© 2024 Bilal Eneouisser. All rights reserved."
+  },
+  "common": {
+    "downloadCV": "Download CV",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close"
+  }
+}

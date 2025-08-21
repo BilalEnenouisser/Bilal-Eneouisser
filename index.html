@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilal Eneouisser - Full Stack Developer</title>
+    <meta name="description" content="Professional Full Stack Developer specializing in React.js, Laravel, WordPress, and UI/UX design.">
+    <link rel="icon" type="image/x-icon" href="assets/img/logo/icon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CR7TYTMB1M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-CR7TYTMB1M', {
+            // Enhanced tracking configuration
+            page_title: 'Portfolio Home',
+            custom_map: {
+                'custom_parameter_1': 'cv_downloads',
+                'custom_parameter_2': 'scroll_depth',
+                'custom_parameter_3': 'time_on_page',
+                'custom_parameter_4': 'portfolio_views',
+                'custom_parameter_5': 'contact_clicks'
+            }
+        });
+    </script>
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <img src="assets/img/logo/logo.svg" alt="Bilal Eneouisser Logo" class="logo-img">
+                </a>
+                
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#portfolio" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    
+                    <!-- Mobile Menu Actions -->
+                    <li class="mobile-actions">
+                        
+                        <button id="theme-toggle-mobile" class="btn btn-outline">
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <a href="assets/cv/CV-ENEOUISSER-Bilal-Développeur-Full-Stack-Laravel-&-UI-UX-Designer-FR.pdf" class="btn btn-primary" download>
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                    </li>
+                </ul>
+                
+                 <div class="nav-actions">
+                    
+                    <button id="theme-toggle" class="btn btn-outline">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <a href="assets/cv/CV-ENEOUISSER-Bilal-Développeur-Full-Stack-Laravel-&-UI-UX-Designer-FR.pdf" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i>
+                        Download CV
+                    </a>
+                </div>
+                
+                <!-- Mobile Navigation Toggle -->
+                <button id="nav-toggle" class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Floating Social Media Bar -->
+    <div class="floating-social-bar">
+        <div class="social-icons">
+            <a href="https://www.instagram.com/bilaleneouisser/" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/bilal-eneouisser-14b62a202/" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/BilalEnenouisser" target="_blank" rel="noopener noreferrer" class="social-icon github" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://web.facebook.com/bilaleneouisser/" target="_blank" rel="noopener noreferrer" class="social-icon facebook" title="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://dribbble.com/bilaleneouisser" target="_blank" rel="noopener noreferrer" class="social-icon dribbble" title="Dribbble">
+                <i class="fab fa-dribbble"></i>
+            </a>
+        </div>
+        <a href="https://wa.me/212622608435?text=Hello! I would like to discuss a project with you." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-greeting">👋 Hi there, I'm Eneouisser Bilal</div>
+                <h1>Bilal Eneouisser</h1>
+                <div class="typing-container">
+                    <span class="typing-text">I am </span>
+                    <span class="typing-animation" id="typing-text"></span>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-description">
+                    Transforming ideas into exceptional digital experiences. Specialized in modern web development, 
+                    intuitive UI/UX design, and scalable e-commerce solutions. Based in Rabat, Morocco.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="#portfolio" class="btn btn-secondary">View My Work</a>
+                </div>
+                
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <i class="fab fa-react"></i>
+                        <span>React.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-laravel"></i>
+                        <span>Laravel</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-wordpress"></i>
+                        <span>WordPress</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-shopify"></i>
+                        <span>Shopify</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="assets/img/hero/bilal.png" alt="Bilal Eneouisser">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p class="section-subtitle">Passionate developer with a focus on creating impactful digital solutions</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="assets/img/about/image_about.png" alt="Bilal Eneouisser">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Where Technology Meets Creativity</h3>
+                    <p class="about-description">
+                        I'm a dedicated Full Stack Developer with over 3 years of experience crafting digital solutions 
+                        that drive business growth. My expertise spans from modern frontend frameworks to robust backend 
+                        systems, with a special focus on creating intuitive user experiences.
+                    </p>
+                    
+                                         <div class="about-stats">
+                         <div class="stat-item">
+                             <div class="stat-number counter" data-target="3">0</div>
+                             <div class="stat-label">Years Experience</div>
+                         </div>
+                         <div class="stat-item">
+                             <div class="stat-number counter" data-target="50">0</div>
+                             <div class="stat-label">Projects Completed</div>
+                         </div>
+                         <div class="stat-item">
+                             <div class="stat-number counter" data-target="25">0</div>
+                             <div class="stat-label">Happy Clients</div>
+                         </div>
+                         <div class="stat-item">
+                             <div class="stat-number counter" data-target="10">0</div>
+                             <div class="stat-label">Brands Worked With</div>
+                         </div>
+                     </div>
+                     
+                     <div class="contact-info">
+                         <div class="contact-item" onclick="window.open('mailto:eneouisserbilal@gmail.com')">
+                             <i class="fas fa-envelope"></i>
+                             <span>eneouisserbilal@gmail.com</span>
+                         </div>
+                         <div class="contact-item">
+                             <i class="fas fa-phone"></i>
+                             <span>+212 6 22 60 84 35</span>
+                         </div>
+                         <div class="contact-item">
+                             <i class="fas fa-map-marker-alt"></i>
+                             <span>Rabat, Morocco</span>
+                         </div>
+                         <div class="contact-item whatsapp" onclick="window.open('https://wa.me/212622608435?text=Hello! I would like to discuss a project with you.')">
+                             <i class="fab fa-whatsapp"></i>
+                             <span>Chat on WhatsApp</span>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Services</h2>
+                <p class="section-subtitle">Comprehensive web development and design solutions</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom web applications built with React.js and Laravel. Responsive and scalable solutions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Intuitive user interfaces designed with user experience in mind using Figma and Adobe XD.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-wordpress"></i>
+                    </div>
+                    <h3>WordPress Development</h3>
+                    <p>Custom WordPress themes, plugins, and e-commerce solutions with SEO optimization.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Solutions</h3>
+                    <p>Complete e-commerce platforms using Shopify, WooCommerce, and custom solutions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Graphic Design</h3>
+                    <p>Creative visual designs including logos, branding, social media graphics, and marketing materials.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>SEO & Performance</h3>
+                    <p>Search engine optimization, performance optimization, and technical SEO implementation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Technologies</h2>
+                <p class="section-subtitle">Comprehensive skill set across frontend, backend, and design</p>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frontend</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag"><i class="fab fa-html5"></i>HTML5</span>
+                        <span class="skill-tag"><i class="fab fa-css3-alt"></i>CSS3</span>
+                        <span class="skill-tag"><i class="fab fa-js-square"></i>JavaScript</span>
+                        <span class="skill-tag"><i class="fab fa-react"></i>React.js</span>
+                        <span class="skill-tag"><i class="fab fa-vuejs"></i>Vue.js</span>
+                        <span class="skill-tag"><i class="fab fa-js-square"></i>TypeScript</span>
+                        <span class="skill-tag"><i class="fab fa-css3-alt"></i>Tailwind CSS</span>
+                        <span class="skill-tag"><i class="fab fa-bootstrap"></i>Bootstrap</span>
+                        <span class="skill-tag"><i class="fab fa-sass"></i>SASS/SCSS</span>
+                        <span class="skill-tag"><i class="fab fa-react"></i>Next.js</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag"><i class="fab fa-php"></i>PHP</span>
+                        <span class="skill-tag"><i class="fab fa-laravel"></i>Laravel</span>
+                        <span class="skill-tag"><i class="fab fa-node-js"></i>Node.js</span>
+                        <span class="skill-tag"><i class="fab fa-node-js"></i>Express.js</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i>MySQL</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i>PostgreSQL</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i>MongoDB</span>
+                        <span class="skill-tag"><i class="fas fa-code"></i>RESTful APIs</span>
+                        <span class="skill-tag"><i class="fas fa-code"></i>GraphQL</span>
+                        <span class="skill-tag"><i class="fas fa-database"></i>Redis</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-cogs"></i> CMS & E-commerce</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag"><i class="fab fa-wordpress"></i>WordPress</span>
+                        <span class="skill-tag"><i class="fab fa-wordpress"></i>WooCommerce</span>
+                        <span class="skill-tag"><i class="fab fa-shopify"></i>Shopify</span>
+                        <span class="skill-tag"><i class="fas fa-palette"></i>Custom Themes</span>
+                        <span class="skill-tag"><i class="fas fa-puzzle-piece"></i>Plugin Development</span>
+                        <span class="skill-tag"><i class="fas fa-shopping-cart"></i>Magento</span>
+                        <span class="skill-tag"><i class="fas fa-shopping-cart"></i>PrestaShop</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-palette"></i> Design & Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag"><i class="fab fa-figma"></i>Figma</span>
+                        <span class="skill-tag"><i class="fas fa-palette"></i>Adobe XD</span>
+                        <span class="skill-tag"><i class="fas fa-image"></i>Photoshop</span>
+                        <span class="skill-tag"><i class="fas fa-pen-fancy"></i>Illustrator</span>
+                        <span class="skill-tag"><i class="fas fa-file-alt"></i>InDesign</span>
+                        <span class="skill-tag"><i class="fas fa-palette"></i>Canva</span>
+                        <span class="skill-tag"><i class="fas fa-palette"></i>Sketch</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag"><i class="fab fa-git-alt"></i>Git</span>
+                        <span class="skill-tag"><i class="fab fa-github"></i>GitHub</span>
+                        <span class="skill-tag"><i class="fab fa-docker"></i>Docker</span>
+                        <span class="skill-tag"><i class="fas fa-code"></i>VS Code</span>
+                        <span class="skill-tag"><i class="fas fa-cube"></i>Webpack</span>
+                        <span class="skill-tag"><i class="fas fa-bolt"></i>Vite</span>
+                        <span class="skill-tag"><i class="fab fa-node-js"></i>npm/yarn</span>
+                        <span class="skill-tag"><i class="fab fa-php"></i>Composer</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag"><i class="fab fa-aws"></i>AWS</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i>Vercel</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i>Netlify</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i>Heroku</span>
+                        <span class="skill-tag"><i class="fas fa-cloud"></i>DigitalOcean</span>
+                        <span class="skill-tag"><i class="fas fa-sync-alt"></i>CI/CD</span>
+                        <span class="skill-tag"><i class="fab fa-linux"></i>Linux</span>
+                        <span class="skill-tag"><i class="fas fa-server"></i>Nginx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Portfolio</h2>
+                <p class="section-subtitle">Showcasing my best work across different technologies</p>
+            </div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="design">UI/UX Design</button>
+                <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="wordpress">Wordpress</button>
+                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+            </div>
+            
+            <!-- project 1 -->
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-categories="web design">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project1/imgbg.jpg" alt="Educational Content Management System – Elmoumen Academy">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Educational Content Management System – Elmoumen Academy</h3>
+                        <p>Online learning system with content management and student access.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">UI/UX Design</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/almoumen-academy.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 2 -->
+                <div class="portfolio-card" data-categories="web wordpress">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project2/imgbg.jpg" alt="Wordpress Blog Commune Ain Kansara">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Wordpress Blog Commune Ain Kansara - Province Moulay Yaâcoub</h3>
+                        <p>Official website for Ain Kansara commune with news and services.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">WordPress</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/commune-ain-kansara.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 3 -->
+                <div class="portfolio-card" data-categories="web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project3/imgbg.jpg" alt="Gestion de Stock et des Demandes – Entraide Nationale">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Gestion de Stock et des Demandes – Entraide Nationale</h3>
+                        <p>Stock and demand management system for national aid coordination.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">Management</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/stock-management.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 4 -->
+                <div class="portfolio-card" data-categories="design web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project4/imgbg.jpg" alt="Artcoustic Agency Landing Page">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Artcoustic Agency Landing Page</h3>
+                        <p>Creative landing page showcasing digital solutions with engaging animations.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">UI/UX Design</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/artcoustic-agency.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 5 -->
+                <div class="portfolio-card" data-categories="web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project5/imgbg.jpg" alt="Projet de Location de Voitures">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Car rental website for Dpl Agency</h3>
+                        <p>Car rental website with booking, payment, and fleet management.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">Management</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/car-rental.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 6 -->
+                <div class="portfolio-card" data-categories="web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project6/imgbg.jpg" alt="Odoo Business Management Landing Page">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Odoo Business Landing Page</h3>
+                        <p>Landing page for Odoo enterprise solutions with modern design.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">Frontend</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/odoo-business.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 7 -->
+                <div class="portfolio-card" data-categories="web wordpress">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project7/imgbg.jpg" alt="MADGICS Agency Landing Page">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>MADGICS Agency Landing Page</h3>
+                        <p>Modern agency landing page for event and lighting management.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">WordPress</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/madgics-agency.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 8 -->
+                <div class="portfolio-card" data-categories="design web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project8/imgbg.jpg" alt="Blassa Grand Taxi App Landing Page">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Blassa Grand Taxi App Landing Page</h3>
+                        <p>Landing page for taxi booking app with modern responsive design and ui ux for the mobile app.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">UI/UX Design</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/blassa-taxi.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 9 -->
+                <div class="portfolio-card" data-categories="web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project9/imgbg.jpg" alt="Starters Landing Page">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Starters Landing Page</h3>
+                        <p>Marketing agency landing page with optimized conversions and design.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">FrontEnd</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/starters-landing.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 10 -->
+                <div class="portfolio-card" data-categories="web wordpress">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project10/imgbg.jpg" alt="Otof Project Website">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Otof Project Website</h3>
+                        <p>Business website showcasing services, portfolio, and solutions.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">WordPress</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/otof-project.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 11 -->
+                <div class="portfolio-card" data-categories="design web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project11/imgbg.jpg" alt="Farabi Doctors App Landing Page">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Farabi Doctors App Landing Page</h3>
+                        <p>Healthcare app landing page with booking features and patient trust.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">UI/UX Design</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/farabi-doctors.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 12 -->
+                <div class="portfolio-card" data-categories="design web">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project12/imgbg.jpg" alt="Etask Gestion de Projet Website">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Etask Gestion de Projet Website</h3>
+                        <p>Project management site with task tracking and team collaboration.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">UI/UX Design</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/etask-gestion.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 13 -->
+                <div class="portfolio-card" data-categories="graphic branding">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project13/imgbg.jpg" alt="Branding – Secrétariat Général du Gouvernement">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Branding – Secrétariat Général du Gouvernement</h3>
+                        <p>Modernized visual identity for governmental institution branding.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Graphic Design</span>
+                            <span class="portfolio-tag">Branding</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/sgg-branding.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 14 -->
+                <div class="portfolio-card" data-categories="graphic branding">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project14/imgbg.jpg" alt="Brandenburginstitut Instagram Posts">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Branding –Brandenburginstitut Instagram Posts</h3>
+                        <p>Educational Instagram designs enhancing social media presence.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Graphic Design</span>
+                            <span class="portfolio-tag">Branding</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/brandenburginstitut.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 15 -->
+                <div class="portfolio-card" data-categories="graphic branding">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project15/imgbg.jpg" alt="Al Bayan Academy Instagram Posts">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Branding –Al Bayan Academy Instagram Posts</h3>
+                        <p>Educational Instagram posts for education and community engagement.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Graphic Design</span>
+                            <span class="portfolio-tag">Branding</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/al-bayan-academy.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- project 16 -->
+                <div class="portfolio-card" data-categories="graphic branding">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project16/imgbg.jpg" alt="Farabi Health App – Visual Identity & Instagram">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Farabi Health App – Visual Identity & Instagram</h3>
+                        <p>Healthcare app branding and Instagram designs for trust and credibility.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Graphic Design</span>
+                            <span class="portfolio-tag">Branding</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/farabi-health.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- project 17 -->
+                <div class="portfolio-card" data-categories="web wordpress ecommerce">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project17/imgbg.jpg" alt="DivineOfficiel E-commerce (Cosmetics & Health)">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>DivineOfficiel E-commerce (Cosmetics & Health)</h3>
+                        <p>E-commerce site for cosmetics and health products with COD.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">WordPress</span>
+                            <span class="portfolio-tag">E-commerce</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/divine-officiel.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- project 18 -->
+                <div class="portfolio-card" data-categories="web wordpress ecommerce">
+                    <div class="portfolio-image">
+                        <img src="assets/img/portfolio/project18/imgbg.jpg" alt="Croc sec E-commerce (Fruits Secs & Noix)">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Croc sec E-commerce (Fruits Secs & Noix)</h3>
+                        <p>Organic dried fruits and nuts e-commerce website with COD.</p>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Web Development</span>
+                            <span class="portfolio-tag">WordPress</span>
+                            <span class="portfolio-tag">E-commerce</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="projects/croc-sec.html" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience & Education</h2>
+                <p class="section-subtitle">My professional journey and background</p>
+            </div>
+            
+            <div class="dual-timeline">
+                <!-- Education Timeline (Left) -->
+                <div class="timeline-column">
+                    <h3 class="timeline-heading">Éducation</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Septembre 2020 - Juillet 2022</div>
+                                <h4 class="timeline-title">MIAGE – Rabat | Formation Académiques</h4>
+                                <div class="timeline-company">Diplôme de Technicien Spécialisé en Développement Informatique</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">October 12, 2018 - 2020</div>
+                                <h4 class="timeline-title">MIAGE – Rabat | Formation Académique</h4>
+                                <div class="timeline-company">Diplôme de Technicien du Support Technique et Maintenance Informatique et Réseau</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Mai 2023 - Octobre 2024</div>
+                                <h4 class="timeline-title">ALX Morocco – Casablanca || Formations en Ligne et Présentielles</h4>
+                                <div class="timeline-company">Certification en Ingénierie Logicielle – ALX Africa (Holberton School Curriculum)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Avril 2021 - Mai 2022</div>
+                                <h4 class="timeline-title">Orange Digital Center – Rabat | Formations en Ligne et Présentielles</h4>
+                                <div class="timeline-company">Certificat en React.js, UX UI sur Figma</div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Septembre 2020 - 2021</div>
+                                <h4 class="timeline-title">LinkedIn | Formations en Ligne</h4>
+                                <div class="timeline-company">Certificat en Développement Web Front-End : HTML5, CSS, Sass, Bootstrap 4 & 5, LESS, JavaScript, jQuery, React.js, UX UI, Responsive Web Design</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Experience Timeline (Right) -->
+                <div class="timeline-column">
+                    <h3 class="timeline-heading">Expériences Professionnelles</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Septembre 2022 - Mars 2025</div>
+                                <h4 class="timeline-title">FIDIACOM – Kenitra & Fes</h4>
+                                <div class="timeline-company">Développeur Web et UI/UX Designer</div>
+                                <p class="timeline-description">
+                                    Développement de sites web et dashboards interactifs avec React.js, Laravel, WordPress et Tailwind CSS.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">2022 - Présent</div>
+                                <h4 class="timeline-title">Freelance – En ligne et présentiel</h4>
+                                <div class="timeline-company">UI/UX Designer et Développeur Web</div>
+                                <p class="timeline-description">
+                                    Création de plus de 40 sites web, e-commerce et landing pages pour clients marocains et étrangers.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Mars 2022 - Juillet 2022</div>
+                                <h4 class="timeline-title">Digital Leaders – Rabat</h4>
+                                <div class="timeline-company">Développeur Web Frontend et UI/UX Designer</div>
+                                <p class="timeline-description">
+                                    Conception UI/UX et intégration frontend d'une plateforme web complète avec animations GSAP et WordPress.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date">Mai 2022 - Août 2022</div>
+                                <h4 class="timeline-title">MAR-TECH – Rabat</h4>
+                                <div class="timeline-company">Stage PFE Web Development et Infographiste</div>
+                                <p class="timeline-description">
+                                    Refonte du site web, création de contenus visuels et gestion de projet digital avec Trello.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Brands I Work With</h2>
+                <p class="section-subtitle">Trusted partners and clients</p>
+            </div>
+            
+            <div class="brands-slider-container">
+                <!-- Left gradient overlay -->
+                <div class="brands-gradient-overlay brands-gradient-left"></div>
+                
+                <!-- Right gradient overlay -->
+                <div class="brands-gradient-overlay brands-gradient-right"></div>
+                
+                <div class="brands-slider" id="brandsSlider">
+                    <div class="brands-track">
+                        <!-- First set of logos -->
+                        <div class="brand-item">
+                            <img src="assets/img/brands/1.jpg" alt="Brand Logo 1">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/2.jpg" alt="Brand Logo 2">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/3.jpg" alt="Brand Logo 3">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/4.jpg" alt="Brand Logo 4">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/5.jpg" alt="Brand Logo 5">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/6.jpg" alt="Brand Logo 6">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/7.jpg" alt="Brand Logo 7">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/8.jpg" alt="Brand Logo 8">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/9.jpg" alt="Brand Logo 9">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/10.jpg" alt="Brand Logo 10">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/11.jpg" alt="Brand Logo 11">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/12.jpg" alt="Brand Logo 12">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/13.jpg" alt="Brand Logo 13">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/14.jpg" alt="Brand Logo 14">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/15.jpg" alt="Brand Logo 15">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/16.jpg" alt="Brand Logo 16">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/17.jpg" alt="Brand Logo 17">
+                        </div>
+                        
+                        
+                        
+                        <!-- Duplicate logos for seamless loop -->
+                        <div class="brand-item">
+                            <img src="assets/img/brands/1.jpg" alt="Brand Logo 1">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/2.jpg" alt="Brand Logo 2">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/3.jpg" alt="Brand Logo 3">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/4.jpg" alt="Brand Logo 4">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/5.jpg" alt="Brand Logo 5">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/6.jpg" alt="Brand Logo 6">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/7.jpg" alt="Brand Logo 7">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/8.jpg" alt="Brand Logo 8">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/9.jpg" alt="Brand Logo 9">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/10.jpg" alt="Brand Logo 10">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/11.jpg" alt="Brand Logo 11">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/12.jpg" alt="Brand Logo 12">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/13.jpg" alt="Brand Logo 13">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/14.jpg" alt="Brand Logo 14">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/15.jpg" alt="Brand Logo 15">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/16.jpg" alt="Brand Logo 16">
+                        </div>
+                        <div class="brand-item">
+                            <img src="assets/img/brands/17.jpg" alt="Brand Logo 17">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p class="section-subtitle">What my clients say about my work</p>
+            </div>
+            
+            <!-- Modern Testimonials Slider -->
+            <div class="testimonials-container">
+                <div class="testimonials-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card active">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The Odoo landing page and Otof website were delivered with clean design, smooth performance, and real attention to detail."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/1.jpg" alt="Youssef El Hani" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>YH</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Youssef El Hani</h4>
+                                    <p class="author-position">Director of Digital Leaders</p>
+                                    <p class="author-city">Rabat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Our educational CMS became simple and effective thanks to his work. Teachers and students find the platform easy to use daily."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/2.jpg" alt="El Moumen Abdelwahed" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>EA</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">El Moumen Abdelwahed</h4>
+                                    <p class="author-position">Director of Elmoumen Academy</p>
+                                    <p class="author-city">Salé</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The cosmetics e-commerce combined elegance with security. Customers appreciate the design and the reliable shopping experience."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/3.jpg" alt="Mohamed Er Rady" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>MR</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Mohamed Er Rady</h4>
+                                    <p class="author-position">Director of DivineOfficiel</p>
+                                    <p class="author-city">Salé</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The new online shop for Crooc Sec reflects quality at every step, from product presentation to smooth checkout."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/4.jpg" alt="Anas El" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>AE</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Anas El</h4>
+                                    <p class="author-position">Director of Crooc Sec</p>
+                                    <p class="author-city">Salé</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The landing page captured our brand identity perfectly. Design and execution worked together seamlessly."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/5.jpg" alt="Mikael Achour" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>MA</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Mikael Achour</h4>
+                                    <p class="author-position">Director of MADGICS Agency</p>
+                                    <p class="author-city">Casablanca</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "Collaboration was smooth, and the landing page came out professional, fast, and optimized for SEO."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/6.jpg" alt="Kris" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>K</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Kris</h4>
+                                    <p class="author-position">Shopify Developer at Starters Agency</p>
+                                    <p class="author-city">USA</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 7 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The visual identity and digital presence for Farabi Health were developed with precision, giving the project credibility in healthcare."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/7.jpg" alt="Abdellah Si Bella" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>AS</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Abdellah Si Bella</h4>
+                                    <p class="author-position">Director of FarabiAgency</p>
+                                    <p class="author-city">Rabat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 8 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">
+                                "The car rental website included practical booking features and user-friendly design, delivered on time with great support."
+                            </p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">
+                                    <img src="assets/img/testimonials/8.jpg" alt="Salim Hafidi" onerror="this.parentElement.innerHTML='<div class=\'avatar-placeholder\'>SH</div>'">
+                                </div>
+                                <div class="author-info">
+                                    <h4 class="author-name">Salim Hafidi</h4>
+                                    <p class="author-position">Project Owner, Car Rental</p>
+                                    <p class="author-city">Nador</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <div class="testimonials-navigation">
+                    <button class="nav-arrow nav-arrow-prev" aria-label="Previous testimonial">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="nav-arrow nav-arrow-next" aria-label="Next testimonial">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+                
+            </div>
+            
+           
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Blog Posts</h2>
+                <p class="section-subtitle">Insights, tips, and updates from the world of web development</p>
+            </div>
+            
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card" data-category="design-tools">
+                    <div class="blog-image">
+                        <img src="assets/img/blogs/blog1.jpg" alt="Top UI Trends Designers Must Know">
+                        <div class="blog-category-tag">Design & Tools</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                August 2, 2025
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+                        </div>
+                        <h3 class="blog-title">Top UI Trends Designers Must Know</h3>
+                        <p class="blog-excerpt">
+                            Discover the latest UI design trends, tools, and creative workflows that help designers craft modern, user-friendly, and engaging digital experiences.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">UI/UX</span>
+                            <span class="blog-tag">Design Tools</span>
+                            <span class="blog-tag">Figma</span>
+                        </div>
+                        <a href="blog-posts/top-ui-trends-designers-must-know.html" class="btn">Read Full Article</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog-card" data-category="web-development">
+                    <div class="blog-image">
+                        <img src="assets/img/blogs/blog2.jpg" alt="Future of Web Development in 2025">
+                        <div class="blog-category-tag">Web Development</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                July 23, 2025
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+                        </div>
+                        <h3 class="blog-title">Future of Web Development in 2025</h3>
+                        <p class="blog-excerpt">
+                            Explore how AI, performance-first coding, and modular architectures are reshaping the way developers build fast and scalable applications today.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">React.js</span>
+                            <span class="blog-tag">AI</span>
+                            <span class="blog-tag">Performance</span>
+                        </div>
+                        <a href="blog-posts/future-of-web-development-2025.html" class="btn">Read Full Article</a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog-card" data-category="cms-ecommerce">
+                    <div class="blog-image">
+                        <img src="assets/img/blogs/blog3.jpg" alt="Best CMS Platforms for Online Growth">
+                        <div class="blog-category-tag">CMS & E-Commerce</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">
+                                <i class="fas fa-calendar"></i>
+                                August 22, 2025
+                            </span>
+                            <span class="blog-read-time">
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+                        </div>
+                        <h3 class="blog-title">Best CMS Platforms for Online Growth</h3>
+                        <p class="blog-excerpt">
+                            A quick comparison of WordPress, Shopify, and other CMS tools, helping businesses pick the best fit for growth and branding.
+                        </p>
+                        <div class="blog-tags">
+                            <span class="blog-tag">WordPress</span>
+                            <span class="blog-tag">Shopify</span>
+                            <span class="blog-tag">CMS</span>
+                        </div>
+                        <a href="blog-posts/best-cms-platforms-online-growth.html" class="btn">Read Full Article</a>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="blog-actions">
+                <a href="blog.html" class="btn">View All Blog Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p class="section-subtitle">Ready to start your next project? Let's discuss how I can help</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-header">
+                        <h3>Let's Work Together</h3>
+                        <p>I'm always open to discussing new projects and creative ideas. Feel free to reach out through any of these channels.</p>
+                    </div>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>eneouisserbilal@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item whatsapp-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+212 6 22 60 84 35</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-media-section">
+                        <h4>Follow Me</h4>
+                        <div class="social-media-grid">
+                            <a href="https://www.instagram.com/bilaleneouisser/" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/bilal-eneouisser-14b62a202/" target="_blank" rel="noopener noreferrer" class="social-btn linkedin">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            
+                            <a href="https://github.com/BilalEnenouisser" target="_blank" rel="noopener noreferrer" class="social-btn github">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            
+                            <a href="https://web.facebook.com/bilaleneouisser/" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            
+                            <a href="https://dribbble.com/bilaleneouisser" target="_blank" rel="noopener noreferrer" class="social-btn dribbble">
+                                <i class="fab fa-dribbble"></i>
+                                <span>Dribbble</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn w-100">
+                            <i class="fab fa-whatsapp"></i>
+                            Send Message via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Left Section: Social Media -->
+                <div class="footer-section footer-social-section">
+                    <h3>Connect With Me</h3>
+                    <p>Let's build something amazing together. Follow me on social media for the latest updates and insights.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/bilaleneouisser/" target="_blank" rel="noopener noreferrer" class="footer-social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span class="social-label">Instagram</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bilal-eneouisser-14b62a202/" target="_blank" rel="noopener noreferrer" class="footer-social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span class="social-label">LinkedIn</span>
+                        </a>
+                        <a href="https://github.com/BilalEnenouisser" target="_blank" rel="noopener noreferrer" class="footer-social-link github">
+                            <i class="fab fa-github"></i>
+                            <span class="social-label">GitHub</span>
+                        </a>
+                        <a href="https://web.facebook.com/bilaleneouisser/" target="_blank" rel="noopener noreferrer" class="footer-social-link facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span class="social-label">Facebook</span>
+                        </a>
+                        <a href="https://dribbble.com/bilaleneouisser" target="_blank" rel="noopener noreferrer" class="footer-social-link dribbble">
+                            <i class="fab fa-dribbble"></i>
+                            <span class="social-label">Dribbble</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Center Section: Quick Links & Actions -->
+                <div class="footer-section footer-links-section">
+                    <h3>Quick Navigation</h3>
+                    <div class="footer-links">
+                        <a href="#home" class="footer-link">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="#about" class="footer-link">
+                            <i class="fas fa-user"></i>
+                            <span>About</span>
+                        </a>
+                        <a href="#portfolio" class="footer-link">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Projects</span>
+                        </a>
+                        <a href="#blog" class="footer-link">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog</span>
+                        </a>
+                        <a href="#contact" class="footer-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-actions">
+                        <a href="assets/cv/CV-ENEOUISSER-Bilal-Développeur-Full-Stack-Laravel-&-UI-UX-Designer-FR.pdf" class="btn btn-outline" download>
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Start Project
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Right Section: CTA -->
+                <div class="footer-section footer-cta-section">
+                    <h3>Ready to Start?</h3>
+                    <p>Have a project in mind? Let's discuss how I can help bring your ideas to life with cutting-edge technology and creative design.</p>
+                    
+                    <div class="cta-features">
+                        <div class="cta-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Free Consultation</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+                        <div class="cta-feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-contact">
+                        <a href="https://wa.me/212622608435?text=Hello! I would like to discuss a project with you." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat on WhatsApp
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Bilal Eneouisser. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" title="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- WhatsApp Button Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            const submitBtn = contactForm.querySelector('.btn');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Add sending animation
+                submitBtn.classList.add('sending');
+                submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Sending...';
+                
+                // Simulate sending delay
+                setTimeout(function() {
+                    // Remove sending animation
+                    submitBtn.classList.remove('sending');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Reset button immediately
+                    submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Send Message via WhatsApp';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
