@@ -1,206 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main Pages -->
     <url>
-        <loc>https://bilaleneouisser.com/</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     
-    <!-- Social Media Profiles -->
     <url>
-        <loc>https://www.instagram.com/bilaleneouisser/</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.linkedin.com/in/bilal-eneouisser-14b62a202/</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <url>
-        <loc>https://github.com/BilalEnenouisser</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <url>
-        <loc>https://web.facebook.com/bilaleneouisser/</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <url>
-        <loc>https://dribbble.com/bilaleneouisser</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <!-- Blog Pages -->
-    <url>
-        <loc>https://bilaleneouisser.com/blog.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/blog.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- Blog Posts -->
     <url>
-        <loc>https://bilaleneouisser.com/blog-posts/modern-web-development-trends-2024.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/blog-posts/best-cms-platforms-online-growth.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/blog-posts/ui-ux-design-principles.html</loc>
-        <lastmod>2024-12-10</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/blog-posts/future-of-web-development-2025.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/blog-posts/ecommerce-optimization.html</loc>
-        <lastmod>2024-12-05</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://bilaleneouisser.com/blog-posts/best-cms-platforms-online-growth.html</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://bilaleneouisser.com/blog-posts/future-of-web-development-2025.html</loc>
-        <lastmod>2024-12-15</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://bilaleneouisser.com/blog-posts/top-ui-trends-designers-must-know.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/blog-posts/top-ui-trends-designers-must-know.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
     <!-- Project Pages -->
     <url>
-        <loc>https://bilaleneouisser.com/projects/almoumen-academy.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/almoumen-academy.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/al-bayan-academy.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/commune-ain-kansara.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/artcoustic-agency.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/stock-management.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/blassa-taxi.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/artcoustic-agency.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/brandenburginstitut.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/car-rental.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/car-rental.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/odoo-business.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/commune-ain-kansara.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/madgics-agency.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/croc-sec.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/blassa-taxi.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/divine-officiel.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/starters-landing.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/etask-gestion.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/otof-project.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/farabi-doctors.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/farabi-doctors.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/farabi-health.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/etask-gestion.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/madgics-agency.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/sgg-branding.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/moulay-rachid.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/brandenburginstitut.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/odoo-business.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/al-bayan-academy.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/otof-project.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/farabi-health.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/sgg-branding.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/divine-officiel.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
     <url>
-        <loc>https://bilaleneouisser.com/projects/starters-landing.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://bilal-eneouisser.vercel.app/projects/croc-sec.html</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
+    
+    <!-- Social Media Profiles -->
     <url>
-        <loc>https://bilaleneouisser.com/projects/stock-management.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://www.instagram.com/bilaleneouisser/</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.linkedin.com/in/bilal-eneouisser-14b62a202/</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://github.com/BilalEnenouisser</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://web.facebook.com/bilaleneouisser/</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://dribbble.com/bilaleneouisser</loc>
+        <lastmod>2025-01-27</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

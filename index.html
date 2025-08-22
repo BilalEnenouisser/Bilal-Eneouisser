@@ -187,7 +187,7 @@
                              <div class="stat-label">Happy Clients</div>
                          </div>
                          <div class="stat-item">
-                             <div class="stat-number counter" data-target="10">0</div>
+                             <div class="stat-number counter" data-target="15">0</div>
                              <div class="stat-label">Brands Worked With</div>
                          </div>
                      </div>
@@ -1304,36 +1304,58 @@
                                 <i class="fab fa-dribbble"></i>
                                 <span>Dribbble</span>
                             </a>
+                            
+                            <a href="https://www.upwork.com/freelancers/~018388b23cc2e76944?mp_source=share" target="_blank" rel="noopener noreferrer" class="social-btn upwork">
+                                <i class="fas fa-briefcase"></i>
+                                <span>Upwork</span>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
                     <form id="contact-form">
+                        <!-- Honeypot field to catch bots -->
+                        <div class="honeypot-field" style="display: none;">
+                            <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name *</label>
-                            <input type="text" id="name" name="name" class="form-input" required>
+                            <input type="text" id="name" name="name" class="form-input" required 
+                                   minlength="2" maxlength="50" pattern="[A-Za-zÀ-ÿ\s]+" 
+                                   title="Please enter a valid name (letters and spaces only)">
                         </div>
                         
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address *</label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-input">
+                            <input type="email" id="email" name="email" class="form-input" required 
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                                   title="Please enter a valid email address">
                         </div>
                         
                         <div class="form-group">
                             <label for="message" class="form-label">Message *</label>
-                            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+                            <textarea id="message" name="message" class="form-textarea" rows="5" required 
+                                      minlength="10" maxlength="1000" 
+                                      title="Message must be between 10 and 1000 characters"></textarea>
                         </div>
                         
-                        <button type="submit" class="btn w-100">
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="privacy" name="privacy" required>
+                                <span class="checkmark"></span>
+                                I agree to be contacted *
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn w-100" id="submit-btn">
                             <i class="fab fa-whatsapp"></i>
                             Send Message via WhatsApp
                         </button>
+                        
+                        <!-- Security status -->
+                        <div id="security-status" class="security-status"></div>
                     </form>
                 </div>
             </div>
@@ -1460,31 +1482,129 @@
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     
-    <!-- WhatsApp Button Animation Script -->
+    <!-- Anti-Spam Contact Form Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const contactForm = document.getElementById('contact-form');
-            const submitBtn = contactForm.querySelector('.btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const securityStatus = document.getElementById('security-status');
+            const honeypotField = document.getElementById('website');
             
+            let submissionCount = 0;
+            let lastSubmissionTime = 0;
+            
+            // Rate limiting check
+            function checkRateLimit() {
+                const now = Date.now();
+                const timeDiff = now - lastSubmissionTime;
+                
+                if (timeDiff < 5000) { // 5 seconds minimum between submissions
+                    return false;
+                }
+                
+                if (submissionCount > 3) { // Max 3 submissions per hour
+                    const hourDiff = (now - lastSubmissionTime) / (1000 * 60 * 60);
+                    if (hourDiff < 1) {
+                        return false;
+                    } else {
+                        submissionCount = 0;
+                    }
+                }
+                
+                return true;
+            }
+            
+            // Validate honeypot field
+            function validateHoneypot() {
+                return honeypotField.value === '';
+            }
+            
+
+            
+            // Sanitize input
+            function sanitizeInput(input) {
+                return input.replace(/[<>]/g, '').trim();
+            }
+            
+            // Show security status
+            function showSecurityStatus(message, type) {
+                securityStatus.textContent = message;
+                securityStatus.className = `security-status ${type}`;
+                setTimeout(() => {
+                    securityStatus.textContent = '';
+                    securityStatus.className = 'security-status';
+                }, 5000);
+            }
+            
+            // Form submission handler
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
+                
+                // Check honeypot
+                if (!validateHoneypot()) {
+                    showSecurityStatus('⚠️ Bot detected! Form submission blocked.', 'error');
+                    return;
+                }
+                
+                // Check rate limiting
+                if (!checkRateLimit()) {
+                    showSecurityStatus('⚠️ Too many submissions. Please wait before trying again.', 'error');
+                    return;
+                }
+                
+
+                
+                // Validate required fields
+                const name = sanitizeInput(document.getElementById('name').value);
+                const email = sanitizeInput(document.getElementById('email').value);
+                const message = sanitizeInput(document.getElementById('message').value);
+                
+                if (!name || !email || !message) {
+                    showSecurityStatus('❌ Please fill in all required fields.', 'error');
+                    return;
+                }
+                
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    showSecurityStatus('❌ Please enter a valid email address.', 'error');
+                    return;
+                }
+                
+                // All validations passed - proceed with submission
+                submissionCount++;
+                lastSubmissionTime = Date.now();
                 
                 // Add sending animation
                 submitBtn.classList.add('sending');
                 submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Sending...';
+                submitBtn.disabled = true;
                 
-                // Simulate sending delay
+                // Show success status
+                showSecurityStatus('✅ Form validated successfully! Redirecting to WhatsApp...', 'success');
+                
+                // Simulate sending delay and redirect to WhatsApp
                 setTimeout(function() {
                     // Remove sending animation
                     submitBtn.classList.remove('sending');
+                    submitBtn.disabled = false;
                     
                     // Reset form
                     contactForm.reset();
                     
-                    // Reset button immediately
+                    // Reset button
                     submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Send Message via WhatsApp';
+                    
+                    // Redirect to WhatsApp with pre-filled message
+                    const whatsappMessage = `Hello! I'm ${name} (${email}). ${message}`;
+                    const whatsappUrl = `https://wa.me/212622608435?text=${encodeURIComponent(whatsappMessage)}`;
+                    window.open(whatsappUrl, '_blank');
+                    
                 }, 2000);
             });
+            
+            // Clear honeypot field on page load (extra security)
+            honeypotField.value = '';
         });
     </script>
 </body>

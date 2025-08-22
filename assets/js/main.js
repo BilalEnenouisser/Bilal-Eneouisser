@@ -6,11 +6,8 @@ let appInitialized = false;
 // Initialize all app functionality
 function initializeApp() {
     if (appInitialized) {
-        console.log('App already initialized, skipping...');
         return;
     }
-    
-    console.log('Initializing app...');
     
     try {
         initializeTheme();
@@ -44,7 +41,6 @@ function initializeApp() {
         initializeMobileTouchEnhancements();
         
         appInitialized = true;
-        console.log('App initialized successfully');
     } catch (error) {
         console.error('Error initializing app:', error);
     }
@@ -300,64 +296,242 @@ function initializePortfolioFilters() {
     const portfolioItems = document.querySelectorAll('.portfolio-card');
     const portfolioGrid = document.querySelector('.portfolio-grid');
     
-    // Set initial mobile layout if needed
-    if (window.innerWidth <= 767) {
-        portfolioGrid.style.gridTemplateColumns = '1fr';
+    // Set initial layout based on screen size
+    function setInitialLayout() {
+        if (window.innerWidth <= 767) {
+            portfolioGrid.classList.remove('desktop-layout');
+            portfolioGrid.classList.add('mobile-layout');
+        } else {
+            portfolioGrid.classList.remove('mobile-layout');
+            portfolioGrid.classList.add('desktop-layout');
+        }
     }
     
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filter = this.getAttribute('data-filter');
+    // Set initial layout
+    setInitialLayout();
+    
+    // Filter function that can be called from both click and touch events
+    function applyFilter(filter, button) {
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Track portfolio filter usage (only once per filter action)
+        const category = button.textContent.trim();
+        if (typeof trackPortfolioFilter === 'function') {
+            trackPortfolioFilter(category);
+        }
+        
+        let visibleCount = 0;
+        
+        // Filter items with better mobile handling
+        portfolioItems.forEach(item => {
+            const categories = item.getAttribute('data-categories');
+            const shouldShow = filter === 'all' || categories.includes(filter);
             
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            let visibleCount = 0;
-            
-            // Filter items
-            portfolioItems.forEach(item => {
-                const categories = item.getAttribute('data-categories');
-                
-                if (filter === 'all' || categories.includes(filter)) {
-                    item.style.display = 'block';
-                    visibleCount++;
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-            
-            // Adjust grid layout based on visible items and screen size
-            if (window.innerWidth <= 767) {
-                // Mobile: always show 1 column
-                portfolioGrid.style.justifyContent = 'center';
-                portfolioGrid.style.gridTemplateColumns = '1fr';
-            } else if (visibleCount <= 3) {
-                // Desktop: adjust based on visible items
-                portfolioGrid.style.justifyContent = 'flex-start';
-                portfolioGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(350px, 1fr))';
+            if (shouldShow) {
+                item.style.display = 'block';
+                item.style.opacity = '';
+                item.style.transform = '';
+                item.style.visibility = '';
+                visibleCount++;
             } else {
-                // Desktop: show 3 columns
-                portfolioGrid.style.justifyContent = 'center';
-                portfolioGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                item.style.display = 'none';
             }
         });
-    });
-    
-    // Handle resize events to maintain mobile layout
-    window.addEventListener('resize', function() {
+        
+        // Force layout update for mobile
         if (window.innerWidth <= 767) {
+            // Mobile: ensure single column layout
+            portfolioGrid.classList.remove('desktop-layout');
+            portfolioGrid.classList.add('mobile-layout');
+            portfolioGrid.style.justifyContent = 'center';
             portfolioGrid.style.gridTemplateColumns = '1fr';
+            portfolioGrid.style.gap = '1.5rem';
+            
+            // Force reflow to ensure filter works
+            portfolioGrid.offsetHeight;
+            
+            // Additional mobile-specific styling
+            portfolioGrid.style.maxWidth = '100%';
+            portfolioGrid.style.margin = '0 auto';
+            
+            // Critical: Force filter to work on small mobile devices
+            if (window.innerWidth <= 480) {
+                // Double-check that hidden items are actually hidden
+                portfolioItems.forEach(item => {
+                    const categories = item.getAttribute('data-categories');
+                    const shouldShow = filter === 'all' || categories.includes(filter);
+                    if (!shouldShow) {
+                        item.style.setProperty('display', 'none', 'important');
+                    }
+                });
+            }
+        } else {
+            // Desktop: show 3 columns
+            portfolioGrid.classList.remove('mobile-layout');
+            portfolioGrid.classList.add('desktop-layout');
+            portfolioGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            portfolioGrid.style.gap = '2rem';
+            
+            if (visibleCount <= 3) {
+                portfolioGrid.style.justifyContent = 'flex-start';
+            } else {
+                portfolioGrid.style.justifyContent = 'center';
+            }
+        }
+    }
+
+    filterButtons.forEach(button => {
+        // Handle both click and touch events for better mobile support
+        function handleFilterClick(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            const filter = button.getAttribute('data-filter');
+            applyFilter(filter, button);
+        }
+        
+        // Add multiple event listeners for maximum compatibility
+        button.addEventListener('click', handleFilterClick);
+        
+        // Touch events for mobile
+        button.addEventListener('touchstart', function(e) {
+            e.stopPropagation();
+            // Add visual feedback
+            button.style.transform = 'scale(0.95)';
+        });
+        
+        button.addEventListener('touchend', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Reset visual feedback
+            button.style.transform = '';
+            // Apply filter
+            setTimeout(() => handleFilterClick(), 10);
+        });
+        
+        // Pointer events for modern touch devices
+        if ('onpointerdown' in window) {
+            button.addEventListener('pointerdown', function(e) {
+                if (e.pointerType === 'touch') {
+                    e.preventDefault();
+                    handleFilterClick();
+                }
+            });
         }
     });
+    
+    // Handle resize events and viewport changes to maintain proper layout
+    function updateLayout() {
+        const currentFilter = document.querySelector('.filter-btn.active');
+        const filter = currentFilter ? currentFilter.getAttribute('data-filter') : 'all';
+        
+        if (window.innerWidth <= 767) {
+            // Mobile: always show 1 column
+            portfolioGrid.classList.remove('desktop-layout');
+            portfolioGrid.classList.add('mobile-layout');
+            portfolioGrid.style.gridTemplateColumns = '1fr';
+            portfolioGrid.style.gap = '1.5rem';
+            portfolioGrid.style.justifyContent = 'center';
+            portfolioGrid.style.maxWidth = '100%';
+            portfolioGrid.style.margin = '0 auto';
+            
+            // Ensure filter state is maintained on mobile
+            portfolioItems.forEach(item => {
+                const categories = item.getAttribute('data-categories');
+                const shouldShow = filter === 'all' || categories.includes(filter);
+                if (shouldShow) {
+                    item.style.display = 'block';
+                    item.style.opacity = '';
+                    item.style.transform = '';
+                    item.style.visibility = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        } else {
+            // Desktop: restore proper grid layout
+            const visibleItems = Array.from(portfolioItems).filter(item => {
+                const categories = item.getAttribute('data-categories');
+                return filter === 'all' || categories.includes(filter);
+            });
+            
+            portfolioGrid.classList.remove('mobile-layout');
+            portfolioGrid.classList.add('desktop-layout');
+            
+            // For filtered results with 3 or fewer items, adjust spacing
+            if (visibleItems.length <= 3) {
+                portfolioGrid.style.justifyContent = 'flex-start';
+            } else {
+                portfolioGrid.style.justifyContent = 'center';
+            }
+        }
+    }
+    
+    // Listen for resize events
+    window.addEventListener('resize', updateLayout);
+    
+    // Listen for orientation changes (mobile devices)
+    window.addEventListener('orientationchange', function() {
+        // Add a small delay to ensure the orientation change is complete
+        setTimeout(updateLayout, 100);
+    });
+    
+    // Listen for viewport changes (when switching between mobile/desktop in dev tools)
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', updateLayout);
+    }
+    
+    // Add media query listener for more reliable viewport detection
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    mediaQuery.addEventListener('change', function(e) {
+        if (e.matches) {
+            // Switched to mobile - force mobile layout
+            portfolioGrid.classList.remove('desktop-layout');
+            portfolioGrid.classList.add('mobile-layout');
+            portfolioGrid.style.gridTemplateColumns = '1fr';
+            portfolioGrid.style.gap = '1.5rem';
+            portfolioGrid.style.justifyContent = 'center';
+            // Refresh filter state on mobile
+            updateLayout();
+        } else {
+            // Switched to desktop
+            portfolioGrid.classList.remove('mobile-layout');
+            portfolioGrid.classList.add('desktop-layout');
+            portfolioGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            portfolioGrid.style.gap = '2rem';
+            // Refresh filter state on desktop
+            updateLayout();
+        }
+    });
+    
+    // Handle page visibility changes (helps with browser dev tools)
+    document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+            // Page became visible again, refresh layout
+            setTimeout(updateLayout, 100);
+        }
+    });
+    
+    // Periodic check to ensure filter state is maintained on small mobile devices
+    if (window.innerWidth <= 480) {
+        setInterval(function() {
+            const currentFilter = document.querySelector('.filter-btn.active');
+            if (currentFilter) {
+                const filter = currentFilter.getAttribute('data-filter');
+                // Force reapply filter to ensure it's working
+                portfolioItems.forEach(item => {
+                    const categories = item.getAttribute('data-categories');
+                    const shouldShow = filter === 'all' || categories.includes(filter);
+                    if (!shouldShow && item.style.display !== 'none') {
+                        item.style.setProperty('display', 'none', 'important');
+                    }
+                });
+            }
+        }, 1000); // Check every second
+    }
 }
 
 // ===== CONTACT FORM =====
@@ -1025,6 +1199,99 @@ function initializeBrandsSlider() {
     // console.log('Brands track element:', brandsTrack);
     // console.log('Brands track scrollable:', brandsTrack.scrollWidth > brandsTrack.clientWidth);
     // console.log('Brands track scrollLeft:', brandsTrack.scrollLeft);
+    
+    // Mobile animation fallback - ensure animation works on all mobile devices
+    function initializeMobileAnimation() {
+        // Enhanced mobile detection
+        const isMobile = window.innerWidth <= 768 || 
+                        'ontouchstart' in window || 
+                        navigator.maxTouchPoints > 0 ||
+                        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        if (isMobile) {
+            // Disable CSS animation on mobile
+            brandsTrack.style.animation = 'none';
+            
+            // JavaScript-based animation for mobile
+            let animationId;
+            let startTime = Date.now();
+            const animationDuration = 30000; // 30 seconds
+            const trackWidth = brandsTrack.scrollWidth;
+            const containerWidth = brandsSlider.offsetWidth;
+            const maxScroll = Math.max(0, trackWidth - containerWidth);
+            
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = (elapsed % animationDuration) / animationDuration;
+                
+                // Calculate position (0 to -maxScroll)
+                const translateX = -progress * maxScroll;
+                
+                // Apply transform with hardware acceleration
+                brandsTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
+                
+                // Continue animation
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            // Start animation with a small delay to ensure DOM is ready
+            setTimeout(() => {
+                animate();
+            }, 100);
+            
+            // Pause on touch/drag
+            brandsTrack.addEventListener('touchstart', () => {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                }
+            });
+            
+            // Resume after touch/drag
+            brandsTrack.addEventListener('touchend', () => {
+                startTime = Date.now() - (Date.now() % animationDuration);
+                setTimeout(() => animate(), 50);
+            });
+            
+            // Pause on hover (if supported on mobile)
+            brandsTrack.addEventListener('mouseenter', () => {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                }
+            });
+            
+            brandsTrack.addEventListener('mouseleave', () => {
+                startTime = Date.now() - (Date.now() % animationDuration);
+                setTimeout(() => animate(), 50);
+            });
+            
+            // Handle visibility change (when app goes to background)
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                } else {
+                    startTime = Date.now() - (Date.now() % animationDuration);
+                    setTimeout(() => animate(), 100);
+                }
+            });
+            
+            // Handle resize events
+            window.addEventListener('resize', () => {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                }
+                // Restart animation after resize
+                setTimeout(() => {
+                    startTime = Date.now() - (Date.now() % animationDuration);
+                    animate();
+                }, 200);
+            });
+        }
+    }
+    
+    // Initialize mobile animation
+    initializeMobileAnimation();
 }
 
 // ===== EXPORT FOR MODULE USE =====
@@ -1477,7 +1744,6 @@ function trackPortfolioFilter(category) {
             'event_label': category,
             'value': 1
         });
-        console.log('Portfolio filter tracked:', category);
     }
 }
 
@@ -1508,14 +1774,7 @@ function initializeEnhancedTracking() {
             link.addEventListener('click', trackCvDownload);
         });
         
-        // Track portfolio filter clicks
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        filterButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const category = this.textContent.trim();
-                trackPortfolioFilter(category);
-            });
-        });
+        // Track portfolio filter clicks (moved to applyFilter function to prevent duplicates)
         
         // Track social media clicks
         const socialLinks = document.querySelectorAll('a[href*="instagram"], a[href*="linkedin"], a[href*="github"], a[href*="facebook"], a[href*="dribbble"]');
@@ -1549,7 +1808,7 @@ function initializeEnhancedTracking() {
             });
         });
         
-        console.log('Enhanced Google Analytics tracking initialized successfully');
+        
     } catch (error) {
         console.error('Error initializing enhanced tracking:', error);
     }
@@ -1559,7 +1818,7 @@ function initializeEnhancedTracking() {
 function initializeMobileTouchEnhancements() {
     // Check if device supports touch
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-        console.log('Mobile touch device detected, enhancing interactions...');
+        
         
         // Add touch feedback for skill tags
         const skillTags = document.querySelectorAll('.skill-tag');
@@ -1642,11 +1901,9 @@ function initializeMobileTouchEnhancements() {
 // ===== DOM READY EVENT =====
 function initializeAppOnce() {
     if (appInitialized) {
-        console.log('App already initialized, skipping...');
         return;
     }
     
-    console.log('DOM fully loaded, initializing app...');
     initializeApp();
     
     // Initialize enhanced tracking after app initialization
@@ -1663,9 +1920,7 @@ document.addEventListener('DOMContentLoaded', initializeAppOnce);
 // Fallback for older browsers - only if not already initialized
 if (document.readyState === 'loading') {
     // DOM is still loading, wait for DOMContentLoaded
-    console.log('DOM still loading, waiting for DOMContentLoaded...');
 } else {
     // DOM is already loaded, initialize immediately
-    console.log('DOM already loaded, initializing immediately...');
     initializeAppOnce();
 }
