@@ -18,7 +18,6 @@ function initializeApp() {
         initializeContactForm();
         initializeScrollEffects();
         initializeLanguageSwitcher();
-        initializeBrandsSlider();
         
         // Initialize testimonials slider
         initializeTestimonialsSlider();
@@ -37,10 +36,13 @@ function initializeApp() {
             initializeAnimations();
         }, 100);
         
-        // Initialize mobile touch enhancements
-        initializeMobileTouchEnhancements();
-        
-        appInitialized = true;
+            // Initialize mobile touch enhancements
+    initializeMobileTouchEnhancements();
+    
+    // Initialize logo slider
+    initializeLogoSider();
+    
+    appInitialized = true;
     } catch (error) {
         console.error('Error initializing app:', error);
     }
@@ -904,394 +906,38 @@ function initializeCounters() {
 // Call counter initialization
 initializeCounters();
 
-// ===== BRANDS SLIDER =====
-function initializeBrandsSlider() {
-    const brandsTrack = document.querySelector('.brands-track');
-    const brandsSlider = document.querySelector('.brands-slider');
-    if (!brandsTrack || !brandsSlider) return;
+// ===== LOGO SLIDER =====
+function initializeLogoSider() {
+    const logoSlider = document.querySelector('.logo-slider');
+    if (!logoSlider) return;
     
-    // Prevent multiple initializations
-    if (brandsTrack.dataset.initialized === 'true') return;
-    brandsTrack.dataset.initialized = 'true';
-
-    let isMouseDown = false;
-    let startX;
-    let startTransformX = 0;
-    let currentTransformX = 0;
-    let animationPaused = false;
-
-    // Pause animation on mouse enter
-    brandsTrack.addEventListener('mouseenter', () => {
-        if (!isMouseDown) {
-            brandsTrack.style.animationPlayState = 'paused';
-            animationPaused = true;
+    const swiper = new Swiper('.logo-slider', { 
+        loop: true,
+        speed: 1200,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        
+        breakpoints: {
+            960: {
+                slidesPerView: 5,
+                spaceBetween: 30
+            },
+            720: {
+                slidesPerView: 4,
+                spaceBetween: 30
+            },
+            540: {
+                slidesPerView: 2,
+                spaceBetween: 4
+            },
+            320: {
+                slidesPerView: 2,
+                spaceBetween: 2
+            },
         }
     });
-
-    // Resume animation on mouse leave (if not dragging)
-    brandsTrack.addEventListener('mouseleave', () => {
-        if (!isMouseDown) {
-            brandsTrack.style.animationPlayState = 'running';
-            animationPaused = false;
-        }
-    });
-
-    // Mouse down event
-    brandsTrack.addEventListener('mousedown', (e) => {
-        console.log('Mouse down detected on brands track');
-        isMouseDown = true;
-        startX = e.pageX - brandsTrack.offsetLeft;
-        
-        // Get current transform position
-        const currentTransform = getComputedStyle(brandsTrack).transform;
-        const matrix = new DOMMatrix(currentTransform);
-        startTransformX = matrix.m41;
-        currentTransformX = startTransformX;
-        
-        brandsTrack.style.cursor = 'grabbing';
-        brandsTrack.style.animationPlayState = 'paused';
-        brandsTrack.classList.add('dragging');
-        animationPaused = true;
-        
-        // Temporarily disable CSS animation to allow manual scrolling
-        brandsTrack.style.animation = 'none';
-        
-        // console.log('Drag started - isMouseDown:', isMouseDown, 'startX:', startX, 'startTransformX:', startTransformX);
-    });
-
-    // Mouse move event
-    brandsTrack.addEventListener('mousemove', (e) => {
-        if (!isMouseDown) return;
-        
-        e.preventDefault();
-        const x = e.pageX - brandsTrack.offsetLeft;
-        const walk = (x - startX) * 2;
-        
-        // Calculate new transform position
-        currentTransformX = startTransformX + walk;
-        
-        // Add boundary limits to prevent scrolling beyond content
-        const trackWidth = brandsTrack.scrollWidth;
-        const containerWidth = brandsSlider.offsetWidth;
-        const maxScrollLeft = trackWidth - containerWidth;
-        
-        // Limit scrolling to content boundaries
-        if (currentTransformX > 0) {
-            currentTransformX = 0; // Don't scroll past the beginning
-        } else if (currentTransformX < -maxScrollLeft) {
-            currentTransformX = -maxScrollLeft; // Don't scroll past the end
-        }
-        
-        // Apply transform for smooth dragging
-        requestAnimationFrame(() => {
-            brandsTrack.style.transform = `translateX(${currentTransformX}px)`;
-            // Update opacity based on position
-            updateBrandsOpacity();
-        });
-        
-        // console.log('Mouse move - isMouseDown:', isMouseDown, 'walk:', walk, 'currentTransformX:', currentTransformX, 'maxScrollLeft:', maxScrollLeft);
-    });
-
-    // Mouse up event
-    brandsTrack.addEventListener('mouseup', () => {
-        isMouseDown = false;
-        brandsTrack.style.cursor = 'grab';
-        brandsTrack.classList.remove('dragging');
-        
-        // Calculate where the CSS animation should continue from
-        const currentPosition = currentTransformX;
-        const trackWidth = brandsTrack.scrollWidth;
-        const containerWidth = brandsSlider.offsetWidth;
-        const maxScrollLeft = trackWidth - containerWidth;
-        
-        // Ensure position is within bounds
-        let finalPosition = currentPosition;
-        if (finalPosition > 0) finalPosition = 0;
-        if (finalPosition < -maxScrollLeft) finalPosition = -maxScrollLeft;
-        
-        // Calculate animation delay to continue from current position
-        const animationDuration = 30; // 30 seconds from CSS
-        const progress = Math.abs(finalPosition) / maxScrollLeft; // 0 to 1
-        const animationDelay = -(progress * animationDuration); // Negative for CSS animation
-        
-        // Apply the final position and restore CSS animation with calculated delay
-        brandsTrack.style.transform = `translateX(${finalPosition}px)`;
-        brandsTrack.style.animation = `scroll ${animationDuration}s linear infinite`;
-        brandsTrack.style.animationDelay = `${animationDelay}s`;
-        
-        if (!animationPaused) {
-            brandsTrack.style.animationPlayState = 'running';
-        }
-        
-        // console.log('Drag ended - finalPosition:', finalPosition, 'animationDelay:', animationDelay);
-    });
-
-    // Mouse leave event
-    brandsTrack.addEventListener('mouseleave', () => {
-        if (isMouseDown) {
-            isMouseDown = false;
-            brandsTrack.style.cursor = 'grab';
-            brandsTrack.classList.remove('dragging');
-            
-            // Calculate where the CSS animation should continue from
-            const currentPosition = currentTransformX;
-            const trackWidth = brandsTrack.scrollWidth;
-            const containerWidth = brandsSlider.offsetWidth;
-            const maxScrollLeft = trackWidth - containerWidth;
-            
-            // Ensure position is within bounds
-            let finalPosition = currentPosition;
-            if (finalPosition > 0) finalPosition = 0;
-            if (finalPosition < -maxScrollLeft) finalPosition = -maxScrollLeft;
-            
-            // Calculate animation delay to continue from current position
-            const animationDuration = 30; // 30 seconds from CSS
-            const progress = Math.abs(finalPosition) / maxScrollLeft; // 0 to 1
-            const animationDelay = -(progress * animationDuration); // Negative for CSS animation
-            
-            // Apply the final position and restore CSS animation with calculated delay
-            brandsTrack.style.transform = `translateX(${finalPosition}px)`;
-            brandsTrack.style.animation = `scroll ${animationDuration}s linear infinite`;
-            brandsTrack.style.animationDelay = `${animationDelay}s`;
-        }
-    });
-
-    // Touch events for mobile
-    brandsTrack.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        startX = touch.pageX - brandsTrack.offsetLeft;
-        
-        // Get current transform position
-        const currentTransform = getComputedStyle(brandsTrack).transform;
-        const matrix = new DOMMatrix(currentTransform);
-        startTransformX = matrix.m41;
-        currentTransformX = startTransformX;
-        
-        brandsTrack.style.animationPlayState = 'paused';
-        brandsTrack.classList.add('dragging');
-        animationPaused = true;
-        
-        // Temporarily disable CSS animation to allow manual scrolling
-        brandsTrack.style.animation = 'none';
-    });
-
-    brandsTrack.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const x = touch.pageX - brandsTrack.offsetLeft;
-        const walk = (x - startX) * 2;
-        
-        // Calculate new transform position
-        currentTransformX = startTransformX + walk;
-        
-        // Add boundary limits to prevent scrolling beyond content
-        const trackWidth = brandsTrack.scrollWidth;
-        const containerWidth = brandsSlider.offsetWidth;
-        const maxScrollLeft = trackWidth - containerWidth;
-        
-        // Limit scrolling to content boundaries
-        if (currentTransformX > 0) {
-            currentTransformX = 0; // Don't scroll past the beginning
-        } else if (currentTransformX < -maxScrollLeft) {
-            currentTransformX = -maxScrollLeft; // Don't scroll past the end
-        }
-        
-        // Apply transform for smooth dragging
-        requestAnimationFrame(() => {
-            brandsTrack.style.transform = `translateX(${currentTransformX}px)`;
-            // Update opacity based on position
-            updateBrandsOpacity();
-        });
-    });
-
-    brandsTrack.addEventListener('touchend', () => {
-        brandsTrack.classList.remove('dragging');
-        
-        // Calculate where the CSS animation should continue from
-        const currentPosition = currentTransformX;
-        const trackWidth = brandsTrack.scrollWidth;
-        const containerWidth = brandsSlider.offsetWidth;
-        const maxScrollLeft = trackWidth - containerWidth;
-        
-        // Ensure position is within bounds
-        let finalPosition = currentPosition;
-        if (finalPosition > 0) finalPosition = 0;
-        if (finalPosition < -maxScrollLeft) finalPosition = -maxScrollLeft;
-        
-        // Calculate animation delay to continue from current position
-        const animationDuration = 30; // 30 seconds from CSS
-        const progress = Math.abs(finalPosition) / maxScrollLeft; // 0 to 1
-        const animationDelay = -(progress * animationDuration); // Negative for CSS animation
-        
-        // Apply the final position and restore CSS animation with calculated delay
-        brandsTrack.style.transform = `translateX(${finalPosition}px)`;
-        brandsTrack.style.animation = `scroll ${animationDuration}s linear infinite`;
-        brandsTrack.style.animationDelay = `${animationDelay}s`;
-        
-        if (!animationPaused) {
-            brandsTrack.style.animationPlayState = 'running';
-        }
-    });
-
-    // Function to update opacity based on position
-    function updateBrandsOpacity() {
-        const brandItems = brandsTrack.querySelectorAll('.brand-item');
-        const sliderWidth = brandsSlider.offsetWidth;
-        
-        brandItems.forEach((item, index) => {
-            const rect = item.getBoundingClientRect();
-            const sliderRect = brandsSlider.getBoundingClientRect();
-            const itemLeft = rect.left - sliderRect.left;
-            const itemRight = itemLeft + rect.width;
-            
-            // Calculate opacity based on position
-            let opacity = 1;
-            
-            // Fade out on left edge
-            if (itemLeft < 100) {
-                opacity = Math.max(0, itemLeft / 100);
-            }
-            
-            // Fade out on right edge
-            if (itemRight > sliderWidth - 100) {
-                opacity = Math.max(0, (sliderWidth - itemRight) / 100);
-            }
-            
-            item.style.opacity = opacity;
-        });
-    }
-
-    // Initial opacity update
-    updateBrandsOpacity();
-    
-    // Test event listener to verify events are working
-    brandsTrack.addEventListener('click', (e) => {
-        // console.log('Click detected on brands track at:', e.clientX, e.clientY);
-    });
-    
-    // Wheel event for mouse wheel scrolling
-    brandsTrack.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const scrollAmount = e.deltaY > 0 ? 100 : -100;
-        brandsTrack.scrollLeft += scrollAmount;
-        updateBrandsOpacity();
-    });
-
-    // Update opacity on scroll
-    brandsTrack.addEventListener('scroll', updateBrandsOpacity);
-    
-    // Add keyboard support for accessibility
-    brandsTrack.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            brandsTrack.scrollLeft -= 100;
-            updateBrandsOpacity();
-        } else if (e.key === 'ArrowRight') {
-            brandsTrack.scrollLeft += 100;
-            updateBrandsOpacity();
-        }
-    });
-    
-    // Make brands track focusable for keyboard navigation
-    brandsTrack.setAttribute('tabindex', '0');
-    
-    // Debug info (commented out for production)
-    // console.log('Brands slider initialized successfully');
-    // console.log('Brands track element:', brandsTrack);
-    // console.log('Brands track scrollable:', brandsTrack.scrollWidth > brandsTrack.clientWidth);
-    // console.log('Brands track scrollLeft:', brandsTrack.scrollLeft);
-    
-    // Mobile animation fallback - ensure animation works on all mobile devices
-    function initializeMobileAnimation() {
-        // Enhanced mobile detection
-        const isMobile = window.innerWidth <= 768 || 
-                        'ontouchstart' in window || 
-                        navigator.maxTouchPoints > 0 ||
-                        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        if (isMobile) {
-            // Disable CSS animation on mobile
-            brandsTrack.style.animation = 'none';
-            
-            // JavaScript-based animation for mobile
-            let animationId;
-            let startTime = Date.now();
-            const animationDuration = 30000; // 30 seconds
-            const trackWidth = brandsTrack.scrollWidth;
-            const containerWidth = brandsSlider.offsetWidth;
-            const maxScroll = Math.max(0, trackWidth - containerWidth);
-            
-            function animate() {
-                const elapsed = Date.now() - startTime;
-                const progress = (elapsed % animationDuration) / animationDuration;
-                
-                // Calculate position (0 to -maxScroll)
-                const translateX = -progress * maxScroll;
-                
-                // Apply transform with hardware acceleration
-                brandsTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
-                
-                // Continue animation
-                animationId = requestAnimationFrame(animate);
-            }
-            
-            // Start animation with a small delay to ensure DOM is ready
-            setTimeout(() => {
-                animate();
-            }, 100);
-            
-            // Pause on touch/drag
-            brandsTrack.addEventListener('touchstart', () => {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                }
-            });
-            
-            // Resume after touch/drag
-            brandsTrack.addEventListener('touchend', () => {
-                startTime = Date.now() - (Date.now() % animationDuration);
-                setTimeout(() => animate(), 50);
-            });
-            
-            // Pause on hover (if supported on mobile)
-            brandsTrack.addEventListener('mouseenter', () => {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                }
-            });
-            
-            brandsTrack.addEventListener('mouseleave', () => {
-                startTime = Date.now() - (Date.now() % animationDuration);
-                setTimeout(() => animate(), 50);
-            });
-            
-            // Handle visibility change (when app goes to background)
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    if (animationId) {
-                        cancelAnimationFrame(animationId);
-                    }
-                } else {
-                    startTime = Date.now() - (Date.now() % animationDuration);
-                    setTimeout(() => animate(), 100);
-                }
-            });
-            
-            // Handle resize events
-            window.addEventListener('resize', () => {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                }
-                // Restart animation after resize
-                setTimeout(() => {
-                    startTime = Date.now() - (Date.now() % animationDuration);
-                    animate();
-                }, 200);
-            });
-        }
-    }
-    
-    // Initialize mobile animation
-    initializeMobileAnimation();
 }
 
 // ===== EXPORT FOR MODULE USE =====
@@ -1307,7 +953,7 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeContactForm,
         initializeScrollEffects,
         initializeLanguageSwitcher,
-        initializeBrandsSlider,
+        initializeLogoSider,
         initializeTestimonialsSlider
     };
 }

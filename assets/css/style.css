@@ -1483,20 +1483,55 @@ a:hover {
   font-size: 0.9rem;
 }
 
-/* ===== BRANDS SECTION ===== */
-.brands {
+/* ===== LOGO SLIDER SECTION ===== */
+.logo-slider-section {
   background: var(--bg-primary);
   padding: 4rem 0;
 }
 
-.brands-slider-container {
+.logo-slider-wrapper {
+  height: 150px;
   position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 2rem 0;
 }
 
-.brands-gradient-overlay {
+.logo-slider {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.logo-slider .swiper-slide {
+  position: relative;
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-slider .swiper-slide img {  
+  margin: 0 auto;
+  max-width: 100% !important;
+  height: auto;
+  filter: grayscale(100%);
+  transition: var(--transition);
+  border-radius: 10px;
+}
+
+.logo-slider .swiper-slide:hover img {
+  filter: grayscale(0%);
+  transform: translateY(-5px);
+}
+
+/* Add gradient overlays for opacity effect on left and right */
+.logo-slider-wrapper::before,
+.logo-slider-wrapper::after {
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1505,151 +1540,14 @@ a:hover {
   pointer-events: none;
 }
 
-.brands-gradient-left {
+.logo-slider-wrapper::before {
   left: 0;
   background: linear-gradient(to right, var(--bg-primary) 0%, transparent 100%);
 }
 
-.brands-gradient-right {
+.logo-slider-wrapper::after {
   right: 0;
   background: linear-gradient(to left, var(--bg-primary) 0%, transparent 100%);
-}
-
-.brands-slider {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  /* Enable drag interaction */
-  cursor: grab;
-}
-
-.brands-track {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  animation: scroll 30s linear infinite;
-  width: max-content;
-  cursor: grab;
-  user-select: none;
-  /* Enable smooth dragging */
-  scroll-behavior: smooth;
-  /* Prevent animation from interfering with drag */
-  will-change: transform;
-  /* Ensure proper scrolling */
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* Smooth scrolling */
-  -webkit-overflow-scrolling: touch;
-  /* Force scrollable behavior */
-  scroll-snap-type: x mandatory;
-  /* Ensure content is wider than container */
-  min-width: 100%;
-}
-
-.brands-track:hover {
-  animation-play-state: paused;
-}
-
-.brands-track:active {
-  cursor: grabbing;
-  animation-play-state: paused;
-}
-
-/* Pause animation when dragging */
-.brands-track.dragging {
-  animation-play-state: paused;
-  cursor: grabbing;
-}
-
-/* Smooth drag interaction */
-.brands-track.dragging * {
-  pointer-events: none;
-}
-
-/* Improve drag responsiveness */
-.brands-track.dragging {
-  animation-play-state: paused !important;
-  transition: none;
-}
-
-/* Ensure brands track is scrollable */
-.brands-track::-webkit-scrollbar {
-  display: none;
-}
-
-.brands-track {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.brand-item {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: white;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  min-width: 150px;
-  height: 100px;
-  opacity: 0;
-  animation: fadeInOut 0.5s ease-in-out forwards;
-}
-
-.brand-item:nth-child(1) { animation-delay: 0.1s; }
-.brand-item:nth-child(2) { animation-delay: 0.2s; }
-.brand-item:nth-child(3) { animation-delay: 0.3s; }
-.brand-item:nth-child(4) { animation-delay: 0.4s; }
-.brand-item:nth-child(5) { animation-delay: 0.5s; }
-.brand-item:nth-child(6) { animation-delay: 0.6s; }
-.brand-item:nth-child(7) { animation-delay: 0.7s; }
-.brand-item:nth-child(8) { animation-delay: 0.8s; }
-.brand-item:nth-child(9) { animation-delay: 0.9s; }
-.brand-item:nth-child(10) { animation-delay: 1.0s; }
-.brand-item:nth-child(11) { animation-delay: 1.1s; }
-.brand-item:nth-child(12) { animation-delay: 1.2s; }
-
-.brand-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
-.brand-item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  filter: grayscale(100%);
-  transition: var(--transition);
-  border-radius: 10px;
-}
-
-.brand-item:hover img {
-  filter: grayscale(0%);
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* ===== CLIENTS SECTION ===== */
@@ -3307,11 +3205,6 @@ a:hover {
   color: var(--text-inverse);
 }
 
-/* ===== FOCUS STYLES ===== */
-*:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
 
 /* ===== LOADING STATES ===== */
 .loading {
