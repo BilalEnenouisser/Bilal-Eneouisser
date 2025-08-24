@@ -1169,11 +1169,17 @@ a:hover {
   border-color: var(--primary-color);
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+  /* Mobile optimization */
+  -webkit-transform: translateY(-2px) scale(1.02);
+  will-change: transform;
 }
 
 .skill-tag:hover i {
   transform: rotate(180deg) scale(1.1);
   color: white;
+  /* Mobile optimization */
+  -webkit-transform: rotate(180deg) scale(1.1);
+  will-change: transform;
 }
 
 .skill-tag:active {
@@ -1267,6 +1273,10 @@ a:hover {
   border-top: 2px solid white;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
+  /* Mobile optimization */
+  -webkit-transform: translate(-50%, -50%);
+  -webkit-animation: spin 0.8s linear infinite;
+  will-change: transform;
 }
 
 .portfolio-grid {
@@ -1957,6 +1967,71 @@ a:hover {
   padding: 0.35rem 0.75rem;
   font-size: 0.75rem;
   border-radius: var(--radius-md);
+}
+
+/* ===== MOBILE PERFORMANCE OPTIMIZATIONS ===== */
+@media (max-width: 768px) {
+  /* Enable hardware acceleration for animations */
+  .skill-tag,
+  .filter-btn,
+  .portfolio-card,
+  .testimonial-card {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+  
+  /* Reduce animation complexity on mobile */
+  .skill-tag:hover {
+    transform: translateY(-1px) scale(1.01);
+    -webkit-transform: translateY(-1px) scale(1.01);
+  }
+  
+  .skill-tag:hover i {
+    transform: rotate(90deg) scale(1.05);
+    -webkit-transform: rotate(90deg) scale(1.05);
+  }
+  
+  /* Optimize loader animation for mobile */
+  .filter-btn.loading::after {
+    animation: spin 1.2s linear infinite;
+    -webkit-animation: spin 1.2s linear infinite;
+  }
+  
+  /* Smooth scrolling for iOS */
+  html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Touch device specific optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .skill-tag:hover,
+  .portfolio-card:hover,
+  .testimonial-card:hover {
+    transform: none;
+    -webkit-transform: none;
+  }
+  
+  .skill-tag:hover i {
+    transform: none;
+    -webkit-transform: none;
+  }
+  
+  /* Use touch events instead of hover on mobile */
+  .skill-tag:active {
+    transform: translateY(-1px) scale(1.01);
+    -webkit-transform: translateY(-1px) scale(1.01);
+  }
+  
+  .skill-tag:active i {
+    transform: rotate(90deg) scale(1.05);
+    -webkit-transform: rotate(90deg) scale(1.05);
+  }
 }
 
 .testimonials-navigation {
@@ -2669,6 +2744,11 @@ a:hover {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 
 /* ===== PROJECT PAGES ===== */
