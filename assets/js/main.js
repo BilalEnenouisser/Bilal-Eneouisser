@@ -314,74 +314,83 @@ function initializePortfolioFilters() {
     
     // Filter function that can be called from both click and touch events
     function applyFilter(filter, button) {
-        // Update active button
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+        // Add loading state to clicked button
+        button.classList.add('loading');
         
         // Track portfolio filter usage (only once per filter action)
-        const category = button.textContent.trim();
+        const category = button.querySelector('.btn-text').textContent.trim();
         if (typeof trackPortfolioFilter === 'function') {
             trackPortfolioFilter(category);
         }
         
-        let visibleCount = 0;
+        // Use setTimeout to create a smooth loading effect
+        setTimeout(() => {
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            let visibleCount = 0;
+            
+            // Filter items with better mobile handling
+            portfolioItems.forEach(item => {
+                const categories = item.getAttribute('data-categories');
+                const shouldShow = filter === 'all' || categories.includes(filter);
+                
+                if (shouldShow) {
+                    item.style.display = 'block';
+                    item.style.opacity = '';
+                    item.style.transform = '';
+                    item.style.visibility = '';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         
-        // Filter items with better mobile handling
-        portfolioItems.forEach(item => {
-            const categories = item.getAttribute('data-categories');
-            const shouldShow = filter === 'all' || categories.includes(filter);
-            
-            if (shouldShow) {
-                item.style.display = 'block';
-                item.style.opacity = '';
-                item.style.transform = '';
-                item.style.visibility = '';
-                visibleCount++;
-            } else {
-                item.style.display = 'none';
-            }
-        });
-        
-        // Force layout update for mobile
-        if (window.innerWidth <= 767) {
-            // Mobile: ensure single column layout
-            portfolioGrid.classList.remove('desktop-layout');
-            portfolioGrid.classList.add('mobile-layout');
-            portfolioGrid.style.justifyContent = 'center';
-            portfolioGrid.style.gridTemplateColumns = '1fr';
-            portfolioGrid.style.gap = '1.5rem';
-            
-            // Force reflow to ensure filter works
-            portfolioGrid.offsetHeight;
-            
-            // Additional mobile-specific styling
-            portfolioGrid.style.maxWidth = '100%';
-            portfolioGrid.style.margin = '0 auto';
-            
-            // Critical: Force filter to work on small mobile devices
-            if (window.innerWidth <= 480) {
-                // Double-check that hidden items are actually hidden
-                portfolioItems.forEach(item => {
-                    const categories = item.getAttribute('data-categories');
-                    const shouldShow = filter === 'all' || categories.includes(filter);
-                    if (!shouldShow) {
-                        item.style.setProperty('display', 'none', 'important');
-                    }
-                });
-            }
-        } else {
-            // Desktop: show 3 columns
-            portfolioGrid.classList.remove('mobile-layout');
-            portfolioGrid.classList.add('desktop-layout');
-            portfolioGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
-            portfolioGrid.style.gap = '2rem';
-            
-            if (visibleCount <= 3) {
-                portfolioGrid.style.justifyContent = 'flex-start';
-            } else {
+            // Force layout update for mobile
+            if (window.innerWidth <= 767) {
+                // Mobile: ensure single column layout
+                portfolioGrid.classList.remove('desktop-layout');
+                portfolioGrid.classList.add('mobile-layout');
                 portfolioGrid.style.justifyContent = 'center';
+                portfolioGrid.style.gridTemplateColumns = '1fr';
+                portfolioGrid.style.gap = '1.5rem';
+                
+                // Force reflow to ensure filter works
+                portfolioGrid.offsetHeight;
+                
+                // Additional mobile-specific styling
+                portfolioGrid.style.maxWidth = '100%';
+                portfolioGrid.style.margin = '0 auto';
+                
+                // Critical: Force filter to work on small mobile devices
+                if (window.innerWidth <= 480) {
+                    // Double-check that hidden items are actually hidden
+                    portfolioItems.forEach(item => {
+                        const categories = item.getAttribute('data-categories');
+                        const shouldShow = filter === 'all' || categories.includes(filter);
+                        if (!shouldShow) {
+                            item.style.setProperty('display', 'none', 'important');
+                        }
+                    });
+                }
+            } else {
+                // Desktop: show 3 columns
+                portfolioGrid.classList.remove('mobile-layout');
+                portfolioGrid.classList.add('desktop-layout');
+                portfolioGrid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                portfolioGrid.style.gap = '2rem';
+                
+                if (visibleCount <= 3) {
+                    portfolioGrid.style.justifyContent = 'flex-start';
+                } else {
+                    portfolioGrid.style.justifyContent = 'center';
+                }
             }
-        }
+            
+            // Remove loading state from button
+            button.classList.remove('loading');
+        }, 500); // 500ms delay for loading effect
     }
 
     filterButtons.forEach(button => {
